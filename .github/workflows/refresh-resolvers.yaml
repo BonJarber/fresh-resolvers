@@ -25,7 +25,10 @@ jobs:
     
       - name: Install DNS Validator
         run: |
+          pwd
           cd dnsvalidator/
+          pwd
+          ls
           python3 setup.py install
     
       - name: Refresh
