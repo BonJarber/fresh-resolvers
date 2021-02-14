@@ -27,7 +27,7 @@ jobs:
         run: python3 setup.py install
     
       - name: Refresh
-        run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 10 -o resolvers.txt
+        run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt
     
       - name: Set current date as env variable
         run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
