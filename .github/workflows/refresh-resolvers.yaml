@@ -1,11 +1,12 @@
 name: refresh-resolvers
 
 on:
-  schedule:
-  # Run hourly
-    # - cron:  '0 * * * *'
-  # Run every 3 minutes for testing
-    - cron:  '*/3 * * * *'
+  # schedule:
+  # # Run hourly
+  #   # - cron:  '0 * * * *'
+  # # Run every 3 minutes for testing
+  #   - cron:  '*/3 * * * *'
+  push
 
 jobs:
   resfresh-list:
