@@ -11,32 +11,38 @@ jobs:
   resfresh-list:
     runs-on: ubuntu-latest
     steps:
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+    
       - name: Checkout DNS Validator
         uses: actions/checkout@v2
         with:
           repository: 'vortexau/dnsvalidator'
+    
       - name: Install DNS Validator
-        run: |
-          python3 setup.py install
+        run: python3 setup.py install
         working-directory: ./dnsvalidator
+    
       - name: Refresh
-        run: |
-          dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 10 -o resolvers.txt
+        run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 10 -o resolvers.txt
+    
       - name: Set current date as env variable
         run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+    
       - name: checkout
         uses: actions/checkout@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+    
       - name: Commit changes
         run: |
           git config --local user.email "bot@barbersec.com"
           git config --local user.name "github-actions[bot]"
           git commit -m "${NOW} update" -a
+    
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
