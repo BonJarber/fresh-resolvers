@@ -24,12 +24,7 @@ jobs:
           repository: 'vortexau/dnsvalidator'
     
       - name: Install DNS Validator
-        run: |
-          pwd
-          cd dnsvalidator/
-          pwd
-          ls
-          python3 setup.py install
+        run: python3 setup.py install
     
       - name: Refresh
         run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 10 -o resolvers.txt
@@ -46,7 +41,8 @@ jobs:
         run: |
           git config --local user.email "bot@barbersec.com"
           git config --local user.name "github-actions[bot]"
-          git commit -m "${NOW} update" -a
+          git add resolvers.txt
+          git commit -m "${NOW} resolvers update"
     
       - name: Push changes
         uses: ad-m/github-push-action@master
