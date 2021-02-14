@@ -24,8 +24,9 @@ jobs:
           repository: 'vortexau/dnsvalidator'
     
       - name: Install DNS Validator
-        run: python3 setup.py install
-        working-directory: ./dnsvalidator
+        run: |
+          cd dnsvalidator/
+          python3 setup.py install
     
       - name: Refresh
         run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 10 -o resolvers.txt
