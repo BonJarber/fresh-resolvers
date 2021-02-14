@@ -16,11 +16,11 @@ jobs:
         with:
           python-version: '3.6'
       - name: Checkout DNS Validator
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
           repository: 'vortexau/dnsvalidator'
       - name: Install DNS Validator
-      - run: |
+        run: |
           python3 setup.py install
         working-directory: ./dnsvalidator
       - name: Refresh
