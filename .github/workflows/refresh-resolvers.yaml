@@ -33,7 +33,11 @@ jobs:
       #   run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt --silent
     
       - name: Fake Generate new resolvers
-        run: echo "8.8.8.8" >> resolvers.txt
+        run: |
+          echo "8.8.8.8" >> resolvers.txt
+          echo "######"
+          pwd
+          ls
     
       - name: Set current date
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
