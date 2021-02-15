@@ -34,12 +34,8 @@ jobs:
           cd dnsvalidator
           python3 setup.py install
     
-      # - name: Generate new resolvers
-      #   run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt --silent
-    
-      - name: Fake Generate new resolvers
-        run: |
-          echo "8.8.8.8" >> resolvers.txt
+      - name: Generate new resolvers
+        run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt --silent
     
       - name: Set current date
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
