@@ -46,9 +46,6 @@ jobs:
 
       - name: Move up directory
         run: cd ..
-    
-      - name: Move resolvers.txt
-        run: mv /home/runner/work/fresh-resolvers/fresh-resolvers/resolvers.txt .
       
       - name: Commit changes
         run: |
