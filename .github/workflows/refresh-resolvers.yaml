@@ -35,11 +35,10 @@ jobs:
           python3 setup.py install
     
       - name: Generate new resolvers
-        # run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o ~/resolvers.txt --silent
-        run: echo "8.8.8.8" >> ~/resolvers.txt
+        run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o ~/resolvers.txt --silent
     
       - name: Set current date
-        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+        run: echo "NOW=$(date +'%Y-%m-%dT%')" >> $GITHUB_ENV
 
       # - name: Move up directory
       #   run: |
@@ -52,7 +51,7 @@ jobs:
           git config --local user.email "bot@barbersec.com"
           git config --local user.name "github-actions[bot]"
           git add resolvers.txt
-          git commit -m "${NOW} resolvers update"
+          git commit -m "${NOW} resolver update"
     
       - name: Push changes
         uses: ad-m/github-push-action@master
