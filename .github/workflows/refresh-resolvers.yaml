@@ -40,8 +40,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
     
-      - name: Move resolvers.txt
-        run: mv ../dnsvalidator/resolvers.txt .
+      - name: Debug
+        run: |
+          pwd
+          ls
+          ls ../
       
       - name: Commit changes
         run: |
