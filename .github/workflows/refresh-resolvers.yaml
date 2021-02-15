@@ -18,6 +18,11 @@ jobs:
         with:
           python-version: '3.6'
     
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Checkout DNS Validator
         uses: actions/checkout@v2
         with:
@@ -41,11 +46,6 @@ jobs:
 
       - name: Move up directory
         run: cd ..
-    
-      - name: checkout
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
     
       - name: Move resolvers.txt
         run: mv /home/runner/work/fresh-resolvers/fresh-resolvers/resolvers.txt .
