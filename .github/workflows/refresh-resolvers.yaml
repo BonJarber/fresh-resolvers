@@ -33,7 +33,7 @@ jobs:
         run: touch resolvers.txt
     
       - name: Set current date
-        run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
     
       - name: checkout
         uses: actions/checkout@v2
