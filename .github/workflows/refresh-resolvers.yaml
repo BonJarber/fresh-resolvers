@@ -27,9 +27,6 @@ jobs:
       - name: Install DNS Validator
         run: |
           cd dnsvalidator
-          echo "######"
-          pwd
-          echo "######"
           python3 setup.py install
     
       # - name: Generate new resolvers
@@ -49,12 +46,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
     
-      - name: Debug
-        run: |
-          pwd
-          ls 
-          ls /home/runner/work/fresh-resolvers/
-          mv /home/runner/work/fresh-resolvers/dnsvalidator/resolvers.txt
+      - name: Move resolvers.txt
+        run: mv /home/runner/work/fresh-resolvers/fresh-resolvers/dnsvalidator/resolvers.txt .
       
       - name: Commit changes
         run: |
