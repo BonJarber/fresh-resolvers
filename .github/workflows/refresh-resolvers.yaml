@@ -48,8 +48,9 @@ jobs:
     
       - name: Debug
         run: |
+          pwd
+          ls 
           ls /home/runner/work/fresh-resolvers/
-          ls /home/runner/work/fresh-resolvers/dnsvalidator
           mv /home/runner/work/fresh-resolvers/dnsvalidator/resolvers.txt
       
       - name: Commit changes
