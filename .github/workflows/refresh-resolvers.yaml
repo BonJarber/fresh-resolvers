@@ -26,10 +26,13 @@ jobs:
       - name: Install DNS Validator
         run: python3 setup.py install
     
-      - name: Generate new resolvers
-        run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt --silent
+      # - name: Generate new resolvers
+      #   run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt --silent
     
-      - name: Set current date as env variable
+      - name: Fake Generate new resolvers
+        run: touch resolvers.txt
+    
+      - name: Set current date
         run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
     
       - name: checkout
