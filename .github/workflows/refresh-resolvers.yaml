@@ -22,12 +22,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: 'vortexau/dnsvalidator'
+          path: dnsvalidator
     
       - name: Install DNS Validator
         run: |
           python3 setup.py install
-          echo "##########"
-          pwd
     
       # - name: Generate new resolvers
       #   run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt --silent
@@ -47,7 +46,7 @@ jobs:
         run: |
           ls /home/runner/work/fresh-resolvers/
           ls /home/runner/work/fresh-resolvers/dnsvalidator
-          ls ../
+          mv /home/runner/work/fresh-resolvers/dnsvalidator/resolvers.txt
       
       - name: Commit changes
         run: |
