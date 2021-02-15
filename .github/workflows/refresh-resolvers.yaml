@@ -30,7 +30,7 @@ jobs:
       #   run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt --silent
     
       - name: Fake Generate new resolvers
-        run: touch resolvers.txt
+        run: echo "8.8.8.8" >> resolvers.txt
     
       - name: Set current date
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
@@ -38,8 +38,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
     
+      - name: Move resolvers.txt
+        run: mv ../dnsvalidator/resolvers.txt .
+      
       - name: Commit changes
         run: |
           git config --local user.email "bot@barbersec.com"
