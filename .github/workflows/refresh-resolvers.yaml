@@ -42,8 +42,8 @@ jobs:
     
       - name: Debug
         run: |
-          pwd
-          ls
+          ls /home/runner/work
+          ls /home/runner/work/dnsvalidator
           ls ../
       
       - name: Commit changes
