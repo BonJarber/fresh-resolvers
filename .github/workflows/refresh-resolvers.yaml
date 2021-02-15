@@ -26,6 +26,7 @@ jobs:
     
       - name: Install DNS Validator
         run: |
+          cd dnsvalidator
           python3 setup.py install
     
       # - name: Generate new resolvers
