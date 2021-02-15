@@ -1,12 +1,9 @@
 name: refresh-resolvers
 
 on:
-  # schedule:
-  # # Run hourly
-  #   # - cron:  '0 * * * *'
-  # # Run every 3 minutes for testing
-  #   - cron:  '*/3 * * * *'
-  push
+  schedule:
+  # Run daily
+    - cron:  '0 1 * * *'
 
 jobs:
   resfresh-list:
@@ -38,7 +35,7 @@ jobs:
         run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 --silent >  ~/resolvers.txt
     
       - name: Set current date
-        run: echo "NOW=$(date +'%Y-%m-%dT%')" >> $GITHUB_ENV
+        run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
       # - name: Move up directory
       #   run: |
@@ -51,7 +48,7 @@ jobs:
           git config --local user.email "bot@barbersec.com"
           git config --local user.name "github-actions[bot]"
           git add resolvers.txt
-          git commit -m "${NOW} resolver update"
+          git commit -m "${NOW} update"
     
       - name: Push changes
         uses: ad-m/github-push-action@master
