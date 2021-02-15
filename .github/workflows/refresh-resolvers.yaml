@@ -35,15 +35,16 @@ jobs:
           python3 setup.py install
     
       - name: Generate new resolvers
-        run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt --silent
+        # run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o ~/resolvers.txt --silent
+        run: echo "8.8.8.8" >> ~/resolvers.txt
     
       - name: Set current date
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
 
-      - name: Move up directory
-        run: |
-          mv resolvers.txt ..
-          cd ..
+      # - name: Move up directory
+      #   run: |
+      #     mv resolvers.txt ..
+      #     cd ..
       
       - name: Commit changes
         run: |
