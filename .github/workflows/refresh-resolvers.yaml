@@ -7,7 +7,7 @@ on:
 
 jobs:
   resfresh-list:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
 
       - name: Set up Python
@@ -36,11 +36,6 @@ jobs:
     
       - name: Set current date
         run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-
-      # - name: Move up directory
-      #   run: |
-      #     mv resolvers.txt ..
-      #     cd ..
       
       - name: Commit changes
         run: |
