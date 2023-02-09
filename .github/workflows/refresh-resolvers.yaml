@@ -30,6 +30,7 @@ jobs:
         run: |
           cd dnsvalidator
           python3 setup.py install
+          pip install contextvars
     
       - name: Generate new resolvers
         run: dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 --silent -o ~/resolvers.txt
